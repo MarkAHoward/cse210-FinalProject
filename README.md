@@ -1,4 +1,4 @@
-# [PROGRAM NAME] 
+# Bedhead
 [a description of the program]
 
 ## Getting Started
