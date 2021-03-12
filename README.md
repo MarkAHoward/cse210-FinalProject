@@ -1,13 +1,19 @@
 # Bedhead
+
 [a description of the program]
 
 ## Getting Started
+
 ---
+
 [how to install and run the program]
 
 ## Project Structure
+
 ---
+
 The project files and folders are organized as follows:
+
 ```
 root                    (project root folder)
 +-- docs                (project documentation)
@@ -22,11 +28,15 @@ root                    (project root folder)
 ```
 
 ## Required Technologies
+
 ---
+
 [list required libraries]
 
 ## Authors
+
 ---
+
 Allison Day : allisonbday@byui.edu
 
 Conner Haar : haa18002@byui.edu
