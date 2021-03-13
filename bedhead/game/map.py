@@ -11,7 +11,7 @@ from game.moving_walls import Moving_Walls
 
 
 class Map:
-    def __init__(self, level):
+    def __init__(self):
 
         self.level = 1
         
