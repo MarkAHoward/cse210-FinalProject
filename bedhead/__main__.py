@@ -6,7 +6,7 @@ from game.decorations import Decorations
 from game.hazards import Hazards 
 from game.walls import Walls 
 from game.coins import Coins 
-from game.keys import keys
+from game.keys import Keys
 from game.background import Background 
 from game.do_updates import Do_Updates 
 from game.do_outputs import Do_Outputs 
@@ -16,11 +16,13 @@ from game.score import Score
 from game.points import Points 
 from game.items import Items 
 from game.director import Director
+from game import constants
 
 
 def main():
     cast = {}
 
+    '''
     walls = Walls()
     cast['walls'] = [walls]
 
@@ -38,6 +40,10 @@ def main():
 
     decorations = Decorations()
     cast['decorations'] = [decorations]
+    '''
+
+    my_map = gernerate_map_list()
+    cast['map'] = [my_map]
 
     player = Player()
     cast['player'] = [player]
@@ -59,6 +65,11 @@ def main():
     bedhead = Director()
     bedhead.setup()
     arcade.run
+
+def gernerate_map_list():
+    my_level = Map()
+    map_list = my_level.get_map()
+    return map_list
 
 
 if __name__ == "__main__":
