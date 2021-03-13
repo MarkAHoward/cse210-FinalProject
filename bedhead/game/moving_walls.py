@@ -1,5 +1,5 @@
 import arcade
-
+from game import constants
 
 class Moving_Walls:
     def __init__(self, my_map):
