@@ -15,75 +15,52 @@ from game.controls import Controls
 from game.score import Score 
 from game.points import Points 
 from game.items import Items 
-# from game.director import Director
-from game import constants
+from game.director import Director
 from game.draw import Draw
 
 
-class MyGame(arcade.Window):
-    """
-    Main application class.
-    """
+def main():
+    cast = {}
 
-    def __init__(self):
+    walls = Walls()
+    cast['walls'] = [walls]
 
-        # Call the parent class and set up the window
-        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
-        if __name__ == "__main__":
-            self.main()
+    hazards = Hazards()
+    cast['hazards'] = [hazards]
 
-    def main(self):
-        cast = {}
+    coins = Coins()
+    cast['coins'] = [coins]
 
-        '''
-        walls = Walls()
-        cast['walls'] = [walls]
+    keys = Keys()
+    cast['keys'] = [keys]
 
-        hazards = Hazards()
-        cast['hazards'] = [hazards]
+    background = Background()
+    cast['background'] = [background]
 
-        coins = Coins()
-        cast['coins'] = [coins]
+    decorations = Decorations()
+    cast['decorations'] = [decorations]
 
-        keys = Keys()
-        cast['keys'] = [keys]
+    player = Player()
+    cast['player'] = [player]
 
-        background = Background()
-        cast['background'] = [background]
 
-        decorations = Decorations()
-        cast['decorations'] = [decorations]
-        '''
+    script = {}
 
-        my_map = self.gernerate_map_list()
-        cast['map'] = [my_map]
+    input_service = Controls()
+    out_service = Do_Outputs()
+    updates = Do_Updates()
 
-        player = Player()
-        cast['player'] = [player]
+    handle_collisions = Do_Collisions()
 
-        draw = Draw(cast)
-        '''
-        script = {}
+    script["input"] = [input_service]
+    script["update"] = [updates, handle_collisions]
+    script["output"] = [out_service] 
 
-        input_service = Controls()
-        out_service = Do_Outputs()
-        updates = Do_Updates()
+    bedhead = Director(cast, script, input_service)
+    bedhead.setup()
+    bedhead.on_draw
+    arcade.run()
 
-        handle_collisions = Do_Collisions()
-        
 
-        script["input"] = [input_service]
-        script["update"] = [updates, handle_collisions]
-        script["output"] = [out_service, draw]
-
-        bedhead = Director()
-        bedhead.setup()
-        arcade.run
-    '''
-    def gernerate_map_list(self):
-        my_level = Map()
-        map_list = my_level.get_map()
-        return map_list
-    
-
-run_game = MyGame()
+if __name__ == "__main__":
+    main()
