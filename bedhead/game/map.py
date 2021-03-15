@@ -1,6 +1,6 @@
-import arcade
 
 
 class Map:
-    def __init__(self) -> None:
-        pass
+    def __init__(self):
+
+        self.level = 1

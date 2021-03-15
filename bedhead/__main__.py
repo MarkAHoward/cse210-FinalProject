@@ -60,7 +60,12 @@ def main():
     bedhead.setup()
     bedhead.on_draw
     arcade.run()
-
+        '''
+    def gernerate_map_list(self):
+        my_level = Map()
+        map_list = my_level.get_map()
+        return map_list
+        '''
 
 if __name__ == "__main__":
     main()

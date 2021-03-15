@@ -1,6 +1,5 @@
 import arcade
 
-
-class Do_Collisions:
-    def __init__(self) -> None:
-        pass
+class Do_Collisions():
+    def __init__(self):
+        pass 
