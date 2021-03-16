@@ -1,6 +1,11 @@
+<<<<<<< HEAD
 from game import constants
 from game.action import Action
 from game.point import Point
+=======
+import arcade
+# from game.action import Action
+>>>>>>> 39c8ffbd862992e8ee4ad021f032100728fb2189
 
 class Do_Updates(Action):
     """A code template for moving actors. The responsibility of this class of
