@@ -9,10 +9,11 @@ from game.coins import Coins
 from game.keys import Keys
 from game.background import Background 
 from game.do_updates import Do_Updates 
-from game.draw_actors import DrawActorsAction
+from game.draw_actors import DrawActors
 from game.output_services import OutputServices
 from game.do_collisions import Do_Collisions 
 from game.input_controls import InputControls
+from game.control_actors import ControlActors
 from game.score import Score 
 from game.points import Points 
 from game.items import Items 
@@ -47,14 +48,15 @@ def main():
     script = {}
 
     output_services = OutputServices()
+    input_service = InputControls()
 
-    input_service = i()
-    do_outputs = DrawActorsAction(output_services)
+    control_actors = ControlActors(input_service)
+    do_outputs = DrawActors(output_services)
     updates = Do_Updates()
 
     handle_collisions = Do_Collisions()
 
-    script["input"] = [input_service]
+    script["input"] = [control_actors]
     script["update"] = [updates, handle_collisions]
     script["output"] = [do_outputs] 
 
