@@ -1,3 +1,5 @@
+import arcade
+from game import constants
 
 class Keys:
     def __init__(self, my_map):
@@ -5,4 +7,4 @@ class Keys:
         self.key_list = arcade.tilemap.process_layer(my_map, "Keys", constants.TILE_SCALING)
 
     def get_keys(self):
-        pass
+        return self.key_list

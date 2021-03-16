@@ -1,3 +1,5 @@
+import arcade
+from game import constants
 
 class Walls:
     def __init__(self, my_map):
