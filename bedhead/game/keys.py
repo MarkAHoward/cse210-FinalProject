@@ -5,3 +5,4 @@ class Keys:
         self.key_list = arcade.tilemap.process_layer(my_map, "Keys", constants.TILE_SCALING)
 
     def get_keys(self):
+        pass

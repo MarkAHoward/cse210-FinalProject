@@ -5,3 +5,4 @@ class Coins:
         self.coin_list = arcade.tilemap.process_layer(my_map, "Coins", constants.TILE_SCALING)
 
     def get_coins(self):
+        pass

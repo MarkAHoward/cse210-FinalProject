@@ -1,6 +1,5 @@
 import arcade
 from game.constants import SCREEN_HEIGHT, SCREEN_TITLE, SCREEN_WIDTH
-from game.draw import Draw
 
 class Director(arcade.Window):
     def __init__(self, cast, script, controls):
@@ -15,9 +14,25 @@ class Director(arcade.Window):
     def setup(self):
         """ This will setup the background color
         """
-        arcade.set_background_color(arcade.color.BLUE)
+        arcade.set_background_color(arcade.color.SKY_BLUE)
+        
 
     def on_draw(self):
-        arcade.start_render()
-        player = self._cast['player'][0]
-        player.draw
+        self._cue_action("output")
+
+    # def on_key_press(self, symbol, modifiers):
+    #     self._input_service.set_key(symbol, modifiers)
+    #     self._cue_action("input")
+
+    # def on_key_release(self, symbol, modifiers):
+    #     self._input_service.remove_key(symbol, modifiers)
+    #     self._cue_action("input")
+
+    def _cue_action(self, tag):
+        """Executes the actions with the given tag.
+        
+        Args:
+            tag (string): The given tag.
+        """ 
+        for action in self._script[tag]:
+            action.execute(self._cast)

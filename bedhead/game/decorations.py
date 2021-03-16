@@ -5,3 +5,4 @@ class Decorations:
         self.decoration_list = arcade.tilemap.process_layer(my_map, "Decorations", constants.TILE_SCALING)
 
     def get_decorations(self):
+        pass

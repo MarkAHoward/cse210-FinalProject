@@ -5,3 +5,4 @@ class Background:
         self.background_list = arcade.tilemap.process_layer(my_map, "Background", constants.TILE_SCALING)
 
     def get_background(self):
+        pass
