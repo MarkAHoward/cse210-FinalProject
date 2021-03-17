@@ -16,7 +16,7 @@ class Director(arcade.Window):
         """
         arcade.set_background_color(arcade.color.SKY_BLUE)
 
-    def on_update(self):
+    def on_update(self, delta_time):
         self._cue_action("update")
 
     def on_draw(self):

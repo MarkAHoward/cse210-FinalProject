@@ -14,39 +14,35 @@ from game.output_services import OutputServices
 from game.do_collisions import Do_Collisions 
 from game.input_controls import InputControls
 from game.control_actors import ControlActors
-from game.draw import Draw
 from game.do_collisions import Do_Collisions
 from game.score import Score 
-from game.points import Points 
 from game.items import Items 
 from game.director import Director
 
 
 def main():
     cast = {}
-    map_list = generate_map_list()
+    # map_list = generate_map_list()
     # cast['map'] = [map_list]
     # draw = Draw(cast)
-    '''
-    walls = Walls()
-    cast['walls'] = [walls]
 
-    hazards = Hazards()
-    cast['hazards'] = [hazards]
+    # walls = Walls()
+    # cast['walls'] = [walls]
 
-    coins = Coins()
-    cast['coins'] = [coins]
+    # hazards = Hazards()
+    # cast['hazards'] = [hazards]
 
-    keys = Keys()
-    cast['keys'] = [keys]
+    # coins = Coins()
+    # cast['coins'] = [coins]
 
-    background = Background()
-    cast['background'] = [background]
+    # keys = Keys()
+    # cast['keys'] = [keys]
 
-    decorations = Decorations()
-    cast['decorations'] = [decorations]
+    # background = Background()
+    # cast['background'] = [background]
 
-    draw = Draw(cast)
+    # decorations = Decorations()
+    # cast['decorations'] = [decorations]
     
     player = Player()
     cast['player'] = [player]
@@ -64,13 +60,13 @@ def main():
     handle_collisions = Do_Collisions()
 
     script["input"] = [control_actors]
-    script["update"] = [updates, handle_collisions]
+    script["update"] = [updates]
     script["output"] = [do_outputs] 
 
-    # bedhead = Director(cast, script, input_service)
-    # bedhead.setup()
-    # arcade.run()
-    '''
+    bedhead = Director(cast, script, input_service)
+    bedhead.setup()
+    arcade.run()
+
 def generate_map_list():
     my_level = Map()
     map_list = my_level.get_map()
