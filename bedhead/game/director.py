@@ -23,6 +23,7 @@ class Director(arcade.Window):
         self._cue_action("output")
 
     def on_key_press(self, symbol, modifiers):
+        self._input_service.on_key_press(symbol, modifiers)
         self._cue_action("input")
 
     def on_key_release(self, symbol, modifiers):

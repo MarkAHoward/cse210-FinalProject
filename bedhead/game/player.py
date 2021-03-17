@@ -7,3 +7,5 @@ class Player(arcade.Sprite):
         super().__init__(constants.CHARACTER_IMAGE, constants.CHARACTER_SCALING)
         self.center_x = int(constants.SCREEN_WIDTH / 5)
         self.center_y = int(constants.SCREEN_HEIGHT / 5)
+        self.change_x = 0
+        self.change_y = 0
