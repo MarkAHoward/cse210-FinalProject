@@ -2,10 +2,11 @@ from game import constants
 from game.action import Action
 import arcade
 
+
 class DoUpdatesAction(Action):
     """A code template for moving actors. The responsibility of this class of
     objects is move any actor that has a velocity more than zero.
-    
+
     Stereotype:
         Controller
 
@@ -31,7 +32,7 @@ class DoUpdatesAction(Action):
         """Moves the given actor to its next position according to its 
         velocity. Will wrap the position from one side of the screen to the 
         other when it reaches the edge in either direction.
-        
+
         Args:
             actor (Actor): The actor to move.
         """
