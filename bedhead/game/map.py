@@ -10,22 +10,21 @@ from game import constants
 
 
 
-class Map(arcade.Window):
+class Map:
     def __init__(self):
-        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
 
         self.level = 1
 
-        map_name = f"level_{self.level}.tmx"
+        map_name = f"cse210-FinalProject/level_{self.level}.tmx"
+        
+        self.my_map = arcade.tilemap.read_tmx(map_name)
 
-        my_map = arcade.tilemap.read_tmx(map_name)
-
-        background = Background(my_map)
-        walls = Walls(my_map)
-        hazards = Hazards(my_map)
-        coins = Coins(my_map)
-        keys = Keys(my_map)
-        decorations = Decorations(my_map)
+        background = Background(self.my_map)
+        walls = Walls(self.my_map)
+        hazards = Hazards(self.my_map)
+        coins = Coins(self.my_map)
+        keys = Keys(self.my_map)
+        decorations = Decorations(self.my_map)
 
         self.map_list = []
 
@@ -36,9 +35,6 @@ class Map(arcade.Window):
         self.map_list.append(keys.get_keys())
         self.map_list.append(decorations.get_decorations())
 
-        for k in self.map_list:
-            k.draw()
-
-    def get_map(self):
-        return self.map_list
+    # def get_map(self):
+    #     return self.map_list
 

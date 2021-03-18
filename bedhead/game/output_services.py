@@ -14,3 +14,6 @@ class OutputServices:
     def draw_actors(self, actors):
         for actor in actors:
             self.draw_actor(actor)
+
+
+    

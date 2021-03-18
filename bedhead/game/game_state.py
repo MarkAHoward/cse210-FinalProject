@@ -1,7 +1,7 @@
 import arcade
 
 from game.player import Player
-# from game.map import Map 
+from game.map import Map 
 from game.do_updates_action import DoUpdatesAction
 from game.draw_actors_action import DrawActorsAction
 from game.output_services import OutputServices
@@ -18,15 +18,19 @@ class GameState:
         self.cast = {}
         player = Player()
         self.cast['player'] = [player]
+        maps = Map()
+        self.cast["map_list"] = [maps.map_list]
         self.script = {}
 
         self.output_services = OutputServices()
         self.input_service = InputServices()
+
+        handle_collisions = DoCollisionsAction()
 
         control_actors = ControlActorsAction(self.input_service)
         do_outputs = DrawActorsAction(self.output_services)
         updates = DoUpdatesAction()
 
         self.script["input"] = [control_actors]
-        self.script["update"] = [updates]
+        self.script["update"] = [updates] # dont forget to add handle_collision_aciton after finishing code for it
         self.script["output"] = [do_outputs] 
