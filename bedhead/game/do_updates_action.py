@@ -2,7 +2,7 @@ from game import constants
 from game.action import Action
 import arcade
 
-class Do_Updates(Action):
+class DoUpdatesAction(Action):
     """A code template for moving actors. The responsibility of this class of
     objects is move any actor that has a velocity more than zero.
     
@@ -34,4 +34,5 @@ class Do_Updates(Action):
             actor (Actor): The actor to move.
         """
 
-        return actor.change_x, actor.change_y
+        actor.center_x = actor.center_x + actor.change_x
+        actor.center_y = actor.center_y + actor.change_y

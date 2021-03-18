@@ -1,7 +1,7 @@
 from game import constants
 from game.action import Action
 
-class ControlActors(Action):
+class ControlActorsAction(Action):
     """A code template for controlling actors. The responsibility of this
     class of objects is translate user input into some kind of intent.
     

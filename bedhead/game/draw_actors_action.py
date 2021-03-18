@@ -2,7 +2,7 @@ from game.action import Action
 from game import constants
 import arcade
 
-class DrawActors(Action):
+class DrawActorsAction(Action):
 
     def __init__(self, output_service):
         self._output_service = output_service
