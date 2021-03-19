@@ -13,9 +13,15 @@ class DrawActorsAction(Action):
         player = cast['player'][0]
         self._output_service.draw_actor(player)
 
-        map_list = cast['map_list']
-        for actors in map_list:
-            actors = arcade.SpriteList()
-            self._output_service.draw_actors(actors)
+        map_list = []
+        map_list.append(cast['background'])
+        map_list.append(cast['walls'])
+        map_list.append(cast['moving_walls'])
+        map_list.append(cast['hazards'])
+        map_list.append(cast['coins'])
+        map_list.append(cast['keys'])
+        map_list.append(cast['decorations'])
+        for actor in map_list:
+            self._output_service.draw_actors(actor)
 
 

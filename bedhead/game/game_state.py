@@ -1,7 +1,7 @@
 import arcade
 
 from game.player import Player
-from game.map import Map 
+from game.mapmaker import MapMaker
 from game.do_updates_action import DoUpdatesAction
 from game.draw_actors_action import DrawActorsAction
 from game.output_services import OutputServices
@@ -18,8 +18,8 @@ class GameState:
         self.cast = {}
         player = Player()
         self.cast['player'] = [player]
-        maps = Map()
-        self.cast["map_list"] = [maps.map_list]
+        maps = MapMaker(self.cast)
+        # self.cast["map_list"] = [maps.map_list]
         self.script = {}
 
         self.output_services = OutputServices()
