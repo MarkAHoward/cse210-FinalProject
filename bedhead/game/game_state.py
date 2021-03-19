@@ -10,24 +10,29 @@ from game.input_services import InputServices
 from game.control_actors_action import ControlActorsAction
 from game.do_collisions_action import DoCollisionsAction
 from game.score import Score 
+from game.gravity import Gravity
 
 class GameState:
 
     def __init__(self):
         
         self.cast = {}
+
         player = Player()
         self.cast['player'] = [player]
+        
         maps = Map()
-        self.cast["map_list"] = [maps.map_list]
+        self.cast["map"] = [maps.map_list]
+
         self.script = {}
 
         self.output_services = OutputServices()
         self.input_service = InputServices()
+        self.gravity_engine = Gravity(self.cast)
 
         handle_collisions = DoCollisionsAction()
 
-        control_actors = ControlActorsAction(self.input_service)
+        control_actors = ControlActorsAction(self.input_service, self.gravity_engine)
         do_outputs = DrawActorsAction(self.output_services)
         updates = DoUpdatesAction()
 
