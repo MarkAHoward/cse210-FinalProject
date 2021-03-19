@@ -23,4 +23,4 @@ class DrawActorsAction(Action):
         player = cast['player'][0]
         self._output_service.draw_actor(player)
 
-        self._output_service.draw_actor(cast['decorations'])
+        self._output_service.draw_actors(cast['decorations'])
