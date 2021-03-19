@@ -19,14 +19,21 @@ class DoUpdatesAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        # for group in cast.values():
+        # for group in cast:
         #     for actor in group:
 
         #         if actor.change_x != 0 or actor.change_y != 0:
         #             self._move_actor(actor)
+
+        needs_update = []
+        needs_update.append(cast['moving_walls'])
+        needs_update.append(cast['hazards'])
+        for actor in needs_update:
+            actor.update()
         
         actor = cast['player'][0]
         self._move_actor(actor)
+
         
 
 
