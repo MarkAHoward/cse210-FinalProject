@@ -20,15 +20,9 @@ class GameState:
 
         player = Player()
         self.cast['player'] = [player]
-<<<<<<< HEAD
-        maps = MapMaker(self.cast)
-        # self.cast["map_list"] = [maps.map_list]
-=======
-        
-        maps = Map()
-        self.cast["map"] = [maps.map_list]
 
->>>>>>> e8abba27d0ede81bbca5257977a83ed83e69df65
+        maps = MapMaker(self.cast)
+        
         self.script = {}
 
         self.output_services = OutputServices()
