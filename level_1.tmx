@@ -580,7 +580,7 @@
  <objectgroup id="8" name="Hazards">
   <object id="4" gid="167" x="2436.12" y="2317.1" width="128" height="128">
    <properties>
-    <property name="change_x" value="2"/>
+    <property name="change_x" value="-2"/>
     <property name="left_boundary" value="1000"/>
     <property name="right boundary" value="1300"/>
    </properties>
