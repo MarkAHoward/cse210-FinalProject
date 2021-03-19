@@ -11,7 +11,8 @@ class InputServices:
     def on_key_press(self, key, modifiers):
         """Called whenever a key is pressed. """ 
         if key == arcade.key.UP or key == arcade.key.W:
-            self._y = constants.PLAYER_JUMP_SPEED
+            # if self.physics_engine.can_jump():
+                self._y = constants.PLAYER_JUMP_SPEED
                 # arcade.play_sound(self.jump_sound)
         elif key == arcade.key.DOWN or key == arcade.key.S:
             self._y = -constants.PLAYER_MOVEMENT_SPEED

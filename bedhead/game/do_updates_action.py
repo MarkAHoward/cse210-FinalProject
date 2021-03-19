@@ -24,8 +24,11 @@ class DoUpdatesAction(Action):
 
         #         if actor.change_x != 0 or actor.change_y != 0:
         #             self._move_actor(actor)
+        
         actor = cast['player'][0]
         self._move_actor(actor)
+        
+
 
     def _move_actor(self, actor):
         """Moves the given actor to its next position according to its 
