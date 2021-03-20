@@ -72,6 +72,6 @@ class Gravity:
     def move_player(self):
         self._move_horizontally()
         self._jump_player()
-        # self.physics_engine.step() # this makes the frame rate alot faster and it feels more responsive
+        # self.physics_engine.step() # this makes the frame rate alot faster and it feels alot quicker
 
 
