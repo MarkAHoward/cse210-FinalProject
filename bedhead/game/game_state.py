@@ -36,5 +36,5 @@ class GameState:
         do_updates = DoUpdatesAction(self.gravity_engine)
 
         self.script["input"] = [control_actors]
-        self.script["update"] = [do_updates, screen_scrolling] # dont forget to add handle_collision_aciton after finishing code for it
+        self.script["update"] = [do_updates, handle_collisions, screen_scrolling] # dont forget to add handle_collision_aciton after finishing code for it
         self.script["output"] = [do_outputs] 

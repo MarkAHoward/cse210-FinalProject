@@ -15,6 +15,7 @@ class ScreenScrollAction(Action):
     def __init__(self):
         self.view_bottom = 0
         self.view_left = 0
+        self._changed = False
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -22,34 +23,44 @@ class ScreenScrollAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        changed = False
-        
+
         player_sprite = cast["player"][0]
+        self.move_screen(player_sprite)
+
+    def _scroll_left(self, player_sprite):
         # Scroll left
         left_boundary = self.view_left + constants.LEFT_VIEWPORT_MARGIN
         if player_sprite.left < left_boundary:
             self.view_left -= left_boundary - player_sprite.left
-            changed = True
+            self._changed = True
 
+    def _scroll_right(self, player_sprite):
         # Scroll right
         right_boundary = self.view_left + constants.SCREEN_WIDTH - constants.RIGHT_VIEWPORT_MARGIN
         if player_sprite.right > right_boundary:
             self.view_left += player_sprite.right - right_boundary
-            changed = True
+            self._changed = True
 
+    def _scroll_up(self, player_sprite):
         # Scroll up
         top_boundary = self.view_bottom + constants.SCREEN_HEIGHT - constants.TOP_VIEWPORT_MARGIN
         if player_sprite.top > top_boundary:
             self.view_bottom += player_sprite.top - top_boundary
-            changed = True
+            self._changed = True
 
+    def _scroll_down(self, player_sprite):
         # Scroll down
         bottom_boundary = self.view_bottom + constants.BOTTOM_VIEWPORT_MARGIN
         if player_sprite.bottom < bottom_boundary:
             self.view_bottom -= bottom_boundary - player_sprite.bottom
-            changed = True
+            self._changed = True
 
-        if changed:
+    def move_screen(self, player_sprite):
+        self._scroll_left(player_sprite)
+        self._scroll_right(player_sprite)
+        self._scroll_down(player_sprite)
+        self._scroll_up(player_sprite)
+        if self._changed:
             # Only scroll to integers. Otherwise we end up with pixels that
             # don't line up on the screen
             self.view_bottom = int(self.view_bottom)

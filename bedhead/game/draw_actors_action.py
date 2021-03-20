@@ -17,5 +17,6 @@ class DrawActorsAction(Action):
             map_list.append(cast[group])
             for actor in map_list:
                 self._output_service.draw_actors(actor)
-        score_text = f"Score: {Score.score_get()}"
-        self._output_service.write_score(score_text)
+
+        # score_text = f"Score: {Score.score_get()}"
+        # self._output_service.write_score(score_text)

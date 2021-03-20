@@ -2,11 +2,10 @@ from game import constants
 from game.action import Action
 import arcade
 
-
 class DoUpdatesAction(Action):
     """A code template for moving actors. The responsibility of this class of
     objects is move any actor that has a velocity more than zero.
-
+    
     Stereotype:
         Controller
 
@@ -39,13 +38,12 @@ class DoUpdatesAction(Action):
                     item.change_y *= -1
             # Mark could make this ^^^^^^^^^^^^^^^^ look better or like more object oriented or something
         self.physics_engine.move_player()
-        self.physics_engine.jump_player()
 
     def _move_actor(self, actor):
         """Moves the given actor to its next position according to its 
         velocity. Will wrap the position from one side of the screen to the 
         other when it reaches the edge in either direction.
-
+        
         Args:
             actor (Actor): The actor to move.
         """

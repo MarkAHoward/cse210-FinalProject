@@ -31,7 +31,7 @@ class Gravity:
                                             
         self.is_on_ground = self.physics_engine.is_on_ground(self.player_sprite)
 
-    def move_player(self):
+    def _move_horizontally(self):
         # Update player forces based on keys pressed
         if self.movement_value > 0:
             # Create a force to the left. Apply it.
@@ -57,7 +57,7 @@ class Gravity:
             # Player's feet are not moving. Therefore up the friction so we stop.
             self.physics_engine.set_friction(self.player_sprite, 1.0)
 
-    def jump_player(self):
+    def _jump_player(self):
         # find out if player is standing on ground
         if self.jump_value > 0:
             if self.physics_engine.is_on_ground(self.player_sprite):
@@ -68,5 +68,10 @@ class Gravity:
     def set_movement_values(self, x, y):
         self.movement_value = x
         self.jump_value = y
+    
+    def move_player(self):
+        self._move_horizontally()
+        self._jump_player()
+        # self.physics_engine.step() # this makes the frame rate alot faster and it feels more responsive
 
 
