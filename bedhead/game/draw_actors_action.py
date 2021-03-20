@@ -1,6 +1,8 @@
 from game.action import Action
 from game import constants
+from game.score import Score
 import arcade
+
 
 class DrawActorsAction(Action):
 
@@ -15,3 +17,5 @@ class DrawActorsAction(Action):
             map_list.append(cast[group])
             for actor in map_list:
                 self._output_service.draw_actors(actor)
+        score_text = f"Score: {Score.score_get()}"
+        self._output_service.write_score(score_text)

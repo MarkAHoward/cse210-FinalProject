@@ -16,7 +16,7 @@ from game.screen_scroll_action import ScreenScrollAction
 class GameState:
 
     def __init__(self):
-        
+
         self.cast = {}
 
         player = Player()
