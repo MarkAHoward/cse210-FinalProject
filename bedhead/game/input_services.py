@@ -4,7 +4,6 @@ from game import constants
 class InputServices:
 
     def __init__(self):
-        # self.physics_engine = arcade.PhysicsEnginePlatformer(cast["player"][0], cast['walls'], constants.GRAVITY)
             self._x = 0
             self._y = 0
 
@@ -14,7 +13,7 @@ class InputServices:
             self._y = constants.PLAYER_JUMP_SPEED
                 # arcade.play_sound(self.jump_sound)
         elif key == arcade.key.DOWN or key == arcade.key.S:
-            self._y = -constants.PLAYER_MOVEMENT_SPEED
+            self._y = 0
         elif key == arcade.key.LEFT or key == arcade.key.A:
             self._x = -constants.PLAYER_MOVEMENT_SPEED
         elif key == arcade.key.RIGHT or key == arcade.key.D:

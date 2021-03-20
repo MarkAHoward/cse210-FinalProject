@@ -19,9 +19,12 @@ class Director(arcade.Window):
         self._cast = game_state.cast
         self._script = game_state.script
         self._input_service = game_state.input_service
+        self._gravity_engine = game_state.gravity_engine
+        
 
     def on_update(self, delta_time):
         self._cue_action("update")
+        self._gravity_engine.physics_engine.step()
 
     def on_draw(self):
         self._cue_action("output")

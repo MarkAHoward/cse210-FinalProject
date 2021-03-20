@@ -12,13 +12,10 @@ class DrawActorsAction(Action):
     def execute(self, cast):
         self._output_service.start_screen()
 
-        player = cast['player'][0]
-        self._output_service.draw_actor(player)
-
-        map_list = cast['map_list']
-        for actors in map_list:
-            actors = arcade.SpriteList()
-            self._output_service.draw_actors(actors)
-
+        map_list = []
+        for group in cast:
+            map_list.append(cast[group])
+            for actor in map_list:
+                self._output_service.draw_actors(actor)
         score_text = f"Score: {Score.score_get()}"
         self._output_service.write_score(score_text)
