@@ -36,8 +36,7 @@ class DoUpdatesAction(Action):
                     item.change_y *= -1
                 if item.boundary_bottom and item.bottom < item.boundary_bottom and item.change_y < 0:
                     item.change_y *= -1
-            
-        actor = cast['player'][0]
+            # Mark could make this ^^^^^^^^^^^^^^^^ look better or like more object oriented or something
         self.physics_engine.move_player()
         self.physics_engine.jump_player()
 

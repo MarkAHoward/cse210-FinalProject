@@ -11,16 +11,7 @@ class DrawActorsAction(Action):
         self._output_service.start_screen()
 
         map_list = []
-        map_list.append(cast['background'])
-        map_list.append(cast['walls'])
-        map_list.append(cast['moving_walls'])
-        map_list.append(cast['hazards'])
-        map_list.append(cast['coins'])
-        map_list.append(cast['keys'])
-        for actor in map_list:
-            self._output_service.draw_actors(actor)
-
-        player = cast['player'][0]
-        self._output_service.draw_actor(player)
-
-        self._output_service.draw_actors(cast['decorations'])
+        for group in cast:
+            map_list.append(cast[group])
+            for actor in map_list:
+                self._output_service.draw_actors(actor)
