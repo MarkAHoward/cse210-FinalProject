@@ -2,8 +2,9 @@ class Score:
     def __init__(self):
         self.score = 0
 
-    def score_get(self):
-        return self.score
+    def get_score_text(self):
+        score_text = f"Score: {self.score}"
+        return score_text
 
-    def score_add(self, points):
+    def add_score(self, points):
         self.score += points

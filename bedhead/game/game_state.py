@@ -21,7 +21,12 @@ class GameState:
 
         player = Player()
         self.cast['player'] = [player]
+
         maps = MapMaker(self.cast)
+
+        score = Score()
+        self.cast["score"] = [score]
+        
         self.script = {}
 
         self.output_services = OutputServices()
@@ -32,7 +37,7 @@ class GameState:
         screen_scrolling = ScreenScrollAction()
 
         control_actors = ControlActorsAction(self.input_service, self.gravity_engine)
-        do_outputs = DrawActorsAction(self.output_services)
+        do_outputs = DrawActorsAction(self.output_services, screen_scrolling)
         do_updates = DoUpdatesAction(self.gravity_engine)
 
         self.script["input"] = [control_actors]

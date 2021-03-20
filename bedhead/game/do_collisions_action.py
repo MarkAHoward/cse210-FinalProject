@@ -24,7 +24,7 @@ class DoCollisionsAction(Action):
         coin_list = cast['coins']
         key_list = cast['keys']
         hazard_list = cast["hazards"]
-
+        Score = cast["score"][0]
 
         # See if we hit any coins
         coin_hit_list = arcade.check_for_collision_with_list(player_sprite, coin_list)
@@ -35,7 +35,7 @@ class DoCollisionsAction(Action):
         for coin in coin_hit_list:
             # Remove the coin
             coin.remove_from_sprite_lists()
-            # self.score += 5
+            Score.score += 5
         
         for key in key_hit_list:
             key.remove_from_sprite_lists()
