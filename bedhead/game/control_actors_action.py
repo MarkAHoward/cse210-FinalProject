@@ -29,7 +29,6 @@ class ControlActorsAction(Action):
         """
         x = self._input_service.get_x_movement()
         y = self._input_service.get_y_movement()
-        player = cast["player"][0]
-        player.change_x = x
-        # if self._gravity_engine.#can_jump
-        player.change_y = y
+        self._gravity_engine.set_movement_values(x, y)
+
+

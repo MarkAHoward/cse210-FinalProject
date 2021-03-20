@@ -12,6 +12,8 @@ class DoUpdatesAction(Action):
     Attributes:
         _input_service (InputService): An instance of InputService.
     """
+    def __init__(self, physics_engine):
+        self.physics_engine = physics_engine
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -36,10 +38,8 @@ class DoUpdatesAction(Action):
                     item.change_y *= -1
             
         actor = cast['player'][0]
-        self._move_actor(actor)
-
-        
-
+        self.physics_engine.move_player()
+        self.physics_engine.jump_player()
 
     def _move_actor(self, actor):
         """Moves the given actor to its next position according to its 
@@ -52,3 +52,5 @@ class DoUpdatesAction(Action):
 
         actor.center_x = actor.center_x + actor.change_x
         actor.center_y = actor.center_y + actor.change_y
+
+    

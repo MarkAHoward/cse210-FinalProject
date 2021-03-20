@@ -23,8 +23,8 @@ class Director(arcade.Window):
         
 
     def on_update(self, delta_time):
-        self._gravity_engine.physics_engine.step()
         self._cue_action("update")
+        self._gravity_engine.physics_engine.step()
 
     def on_draw(self):
         self._cue_action("output")

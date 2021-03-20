@@ -21,7 +21,6 @@ class GameState:
         player = Player()
         self.cast['player'] = [player]
         maps = MapMaker(self.cast)
-        # self.cast["map_list"] = [maps.map_list]
         self.script = {}
 
         self.output_services = OutputServices()
@@ -32,7 +31,7 @@ class GameState:
 
         control_actors = ControlActorsAction(self.input_service, self.gravity_engine)
         do_outputs = DrawActorsAction(self.output_services)
-        updates = DoUpdatesAction()
+        updates = DoUpdatesAction(self.gravity_engine)
 
         self.script["input"] = [control_actors]
         self.script["update"] = [updates] # dont forget to add handle_collision_aciton after finishing code for it
