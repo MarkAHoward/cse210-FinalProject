@@ -13,6 +13,13 @@ class DoCollisionsAction(Action):
     Attributes:
         _input_service (InputService): An instance of InputService.
     """
+    def __init__(self, cast):
+        self.player_sprite = cast['player'][0]
+        self.coin_list = cast['coins']
+        self.key_list = cast['keys']
+        self.hazard_list = cast["hazards"]
+        self.Score = cast["score"][0]
+        self.items = cast["items"][0]
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -20,26 +27,29 @@ class DoCollisionsAction(Action):
         Args:
             cast (dict): The game actors {key: tag, value: list}.
         """
-        player_sprite = cast['player'][0]
-        coin_list = cast['coins']
-        key_list = cast['keys']
-        hazard_list = cast["hazards"]
-        Score = cast["score"][0]
+        self.on_coin_collision()
+        self.on_key_collision()
+        self.on_hazard_collision()
 
-        # See if we hit any coins
-        coin_hit_list = arcade.check_for_collision_with_list(player_sprite, coin_list)
-        key_hit_list = arcade.check_for_collision_with_list(player_sprite, key_list)
-        hazards_hit_list = arcade.check_for_collision_with_list(player_sprite, hazard_list)
 
+
+    def on_coin_collision(self):
+        coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.coin_list)
         # Loop through each coin we hit (if any) and remove it
         for coin in coin_hit_list:
             # Remove the coin
             coin.remove_from_sprite_lists()
-            Score.score += 5
-        
+            self.Score.score += 5
+
+    def on_key_collision(self):
+        key_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.key_list)
         for key in key_hit_list:
             key.remove_from_sprite_lists()
+            self.items.add_key_to_inventory()
+
             # something to return the information that the key has been hit and stored in the key list that lets you go through a door
-            
+    
+    def on_hazard_collision(self):
+        hazards_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.hazard_list)
         for hazard in hazards_hit_list:
-            return None # game over
+            self.player_sprite.die() # this needs to trigger some game over function

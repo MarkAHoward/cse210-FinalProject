@@ -12,15 +12,21 @@ from game.do_collisions_action import DoCollisionsAction
 from game.score import Score 
 from game.gravity import Gravity
 from game.screen_scroll_action import ScreenScrollAction
+from game.items import Items
+from game.game_over import GameOverView
 
 class GameState:
 
     def __init__(self):
+        self.game_over = GameOverView()
 
         self.cast = {}
 
         player = Player()
         self.cast['player'] = [player]
+
+        items = Items()
+        self.cast['items'] = [items]
 
         maps = MapMaker(self.cast)
 
@@ -33,7 +39,7 @@ class GameState:
         self.input_service = InputServices()
         self.gravity_engine = Gravity(self.cast)
 
-        handle_collisions = DoCollisionsAction()
+        handle_collisions = DoCollisionsAction(self.cast)
         screen_scrolling = ScreenScrollAction()
 
         control_actors = ControlActorsAction(self.input_service, self.gravity_engine)

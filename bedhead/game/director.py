@@ -1,16 +1,17 @@
 import arcade
 from game import constants
 
-class Director(arcade.Window):
+class Director(arcade.View):
     def __init__(self):
         """ This will start the game
         """
-        super().__init__(constants.SCREEN_WIDTH, constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
+        super().__init__()
 
         self._cast = None
         self._script = None
         self._controls = None
         self._input_service = None
+        self._game_over = None
 
     def setup(self, game_state):
         """ This will setup the background color
@@ -20,11 +21,15 @@ class Director(arcade.Window):
         self._script = game_state.script
         self._input_service = game_state.input_service
         self._gravity_engine = game_state.gravity_engine
-        
+        self._game_over = game_state.game_over
+
 
     def on_update(self, delta_time):
         self._cue_action("update")
         self._gravity_engine.physics_engine.step()
+        player = self._cast["player"][0]
+        if player.alive == False:
+            self.window.show_view(self._game_over)
 
     def on_draw(self):
         self._cue_action("output")

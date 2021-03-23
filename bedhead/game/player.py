@@ -9,3 +9,7 @@ class Player(arcade.Sprite):
         self.center_y = int(constants.SCREEN_HEIGHT / 2)
         self.change_x = 0
         self.change_y = 0
+        self.alive = True
+
+    def die(self):
+        self.alive = False
