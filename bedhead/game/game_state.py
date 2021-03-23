@@ -14,6 +14,7 @@ from game.gravity import Gravity
 from game.screen_scroll_action import ScreenScrollAction
 from game.items import Items
 from game.game_over import GameOverView
+from game.start_screen import StartScreen
 
 class GameState:
 
@@ -21,6 +22,8 @@ class GameState:
         self.game_over = GameOverView()
 
         self.cast = {}
+
+        start_screen = StartScreen(self.cast)
 
         player = Player()
         self.cast['player'] = [player]
@@ -36,7 +39,7 @@ class GameState:
         self.script = {}
 
         self.output_services = OutputServices()
-        self.input_service = InputServices()
+        self.input_service = InputServices(self.cast)
         self.gravity_engine = Gravity(self.cast)
 
         handle_collisions = DoCollisionsAction(self.cast)
