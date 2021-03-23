@@ -9,6 +9,9 @@ class StartScreen(arcade.Window):
     def __init__(self):
 
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+        
+        self.start_screen = True
+        self.controls_screen = False
 
         self.button_list_1 = None
         self.button_list_2 = None
@@ -30,7 +33,7 @@ class StartScreen(arcade.Window):
 
         image_source_1 = "cse210-FinalProject/bedhead/assets/start_game_button.png"
         image_source_2 = "cse210-FinalProject/bedhead/assets/controls_button.png"
-        image_source_3 = None
+        image_source_3 = "cse210-FinalProject/bedhead/assets/back_button.png"
         image_source_4 = "cse210-FinalProject/bedhead/assets/highlight_box.png"
 
         self.button_1 = arcade.Sprite(image_source_1)
@@ -41,13 +44,13 @@ class StartScreen(arcade.Window):
         self.button_2.center_x = SCREEN_WIDTH / 2
         self.button_2.center_y = SCREEN_HEIGHT * (1/3)
 
-        # self.button_3 = arcade.Sprite(image_source_3)
-        # self.button_3.center_x = SCREEN_WIDTH - 100
-        # self.button_3.center_y = 50
+        self.button_3 = arcade.Sprite(image_source_3)
+        self.button_3.center_x = SCREEN_WIDTH - 100
+        self.button_3.center_y = 50
 
         self.button_list_1.append(self.button_1)
         self.button_list_1.append(self.button_2)
-        # self.button_list_2.append(self.button_3)
+        self.button_list_2.append(self.button_3)
 
         self.highlight = arcade.Sprite(image_source_4)
         self.highlight.center_x = SCREEN_WIDTH / 2
@@ -59,31 +62,52 @@ class StartScreen(arcade.Window):
     def on_draw(self):
         arcade.start_render()
 
+
         self.highlight_list.draw()
 
-        self.button_list_1.draw()
-        # self.button_list_2.draw()
+        if self.start_screen == True:
+            self.button_list_1.draw()
+        elif self.controls_screen == True:
+            self.button_list_2.draw()
 
     def on_key_press(self, key, modifiers):
         if key == arcade.key.W or key == arcade.key.UP:
-            if self.highlight.center_y == SCREEN_HEIGHT * (2/3):
-                pass
-            elif self.highlight.center_y == SCREEN_HEIGHT * (1/3):
-                self.highlight.center_y = SCREEN_HEIGHT * (2/3)
+            if self.controls_screen == True:
+                self.highlight.center_y = 50
+                self.highlight.center_x = SCREEN_WIDTH - 100
+            if self.start_screen == True:
+                if self.highlight.center_y == SCREEN_HEIGHT * (2/3):
+                    pass
+                elif self.highlight.center_y == SCREEN_HEIGHT * (1/3):
+                    self.highlight.center_y = SCREEN_HEIGHT * (2/3)
         if key == arcade.key.S or key == arcade.key.DOWN:
-            if self.highlight.center_y == SCREEN_HEIGHT * (2/3):
-                self.highlight.center_y = SCREEN_HEIGHT * (1/3)
-            elif self.highlight.center_y == SCREEN_HEIGHT * (1/3):
-                pass
+            if self.controls_screen == True:
+                self.highlight.center_y = 50
+                self.highlight.center_x = SCREEN_WIDTH - 100
+            if self.start_screen == True:
+                if self.highlight.center_y == SCREEN_HEIGHT * (2/3):
+                    self.highlight.center_y = SCREEN_HEIGHT * (1/3)
+                elif self.highlight.center_y == SCREEN_HEIGHT * (1/3):
+                    pass
+                
         if key == arcade.key.ENTER:
-            self.change_screen()
+            
+            if self.start_screen == True:
+                if self.highlight.center_y == SCREEN_HEIGHT * (2/3):
+                    pass
+                else:
+                    self.start_screen = False
+                    self.controls_screen = True
+                    self.highlight.center_y = 50
+                    self.highlight.center_x = SCREEN_WIDTH - 100
+            elif self.controls_screen == True:
+                self.start_screen = True
+                self.controls_screen = False
+                self.highlight.center_y = SCREEN_HEIGHT * (1/3)
+                self.highlight.center_x = SCREEN_WIDTH / 2
     
     def on_update(self, delta_time):
         self.highlight.update()
-    
-    def change_screen(self):
-        pass
-    
 
 def main():
     """ Main method """
