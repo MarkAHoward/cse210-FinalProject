@@ -1,6 +1,7 @@
 import arcade
 from game.game_state import GameState
 from game.director import Director
+from startup.start_screen import StartScreen
 from game import constants
 
 def main():
