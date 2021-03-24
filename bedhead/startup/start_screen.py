@@ -4,11 +4,11 @@ SCREEN_WIDTH = 1000
 SCREEN_HEIGHT = 650
 SCREEN_TITLE = "Bedhead"
 
-class StartScreen(arcade.Window):
+class StartScreen(arcade.View):
 
     def __init__(self):
 
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+        super().__init__()
         
         self.start_screen = True
         self.controls_screen = False

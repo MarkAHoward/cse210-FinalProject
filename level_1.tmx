@@ -593,7 +593,13 @@
    <property name="left_boundary" value="1000"/>
    <property name="right_boundary" value="1300"/>
   </properties>
-  <object id="1" gid="167" x="2383.72" y="2294.64" width="128" height="128"/>
+  <object id="1" gid="167" x="2383.72" y="2294.64" width="128" height="128">
+   <properties>
+    <property name="change_x" value="2"/>
+    <property name="left_boundary" value="1000"/>
+    <property name="right_boundary" value="1300"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer id="5" name="Coins" width="25" height="20">
   <data encoding="base64" compression="zlib">
@@ -602,7 +608,7 @@
  </layer>
  <layer id="6" name="Keys" width="25" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGAT6wZKAdQAQAAHDgAKU=
+   eJxjYBgFo2AUjIJRMApGHpAlQe0SMu2QIVMfOQAAlEAA3g==
   </data>
  </layer>
  <layer id="7" name="Decorations" width="25" height="20">
