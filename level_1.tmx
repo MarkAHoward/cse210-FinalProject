@@ -608,12 +608,12 @@
  </layer>
  <layer id="6" name="Keys" width="25" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGHpAlQe0SMu2QIVMfOQAAlEAA3g==
+   eJxjYBgFo2AUjIJRMApGAT6wZKAdQAQAAHDgAKU=
   </data>
  </layer>
  <layer id="8" name="Doors" width="25" height="20">
   <data encoding="base64" compression="zlib">
-   eJxjYBgFo2AUjIJRMApGwVAHAAfQAAE=
+   eJxjYBgFo2AUjIJRMApGHpClgx0ydLADBgArMAA6
   </data>
  </layer>
  <layer id="7" name="Decorations" width="25" height="20">
