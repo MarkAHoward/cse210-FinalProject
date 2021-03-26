@@ -18,7 +18,7 @@ from game.game_over import GameOverView
 class GameState:
 
     def __init__(self):
-        self.game_over = GameOverView()
+        # self.game_over = GameOverView()
 
         self.cast = {}
 

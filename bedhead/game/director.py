@@ -1,11 +1,14 @@
 import arcade
 from game import constants
+from game.game_state import GameState
 
 class Director(arcade.View):
-    def __init__(self):
+    def __init__(self, views):
         """ This will start the game
         """
         super().__init__()
+
+        self.views = views
 
         self._cast = None
         self._script = None
@@ -29,7 +32,7 @@ class Director(arcade.View):
         self._gravity_engine.physics_engine.step()
         player = self._cast["player"][0]
         if player.alive == False:
-            self.window.show_view(self._game_over)
+            self.views['window'].show_view(self.views['game_over'])
 
     def on_draw(self):
         self._cue_action("output")

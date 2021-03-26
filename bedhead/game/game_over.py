@@ -4,7 +4,7 @@ from game import constants
 class GameOverView(arcade.View):
     """ View to show when game is over """
 
-    def __init__(self):
+    def __init__(self, views):
         """ This is run once when we switch to this view """
         super().__init__()
         self.texture = arcade.load_texture("cse210-FinalProject/bedhead/assets/images/game_over.png")
