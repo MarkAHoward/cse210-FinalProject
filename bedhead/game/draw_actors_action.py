@@ -16,7 +16,7 @@ class DrawActorsAction(Action):
                 self._output_service.draw_actor(actor)
 
         for group in cast:
-            if group != "score" and group != "items" and group != "player" and group != "background" and group != "decorations":
+            if group != "score" and group != "items" and group != "player" and group != "background" and group != "decorations" and group != "invisible":
                 for actor in cast[group]:
                     self._output_service.draw_actor(actor)
             # else:

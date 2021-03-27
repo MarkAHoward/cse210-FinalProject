@@ -6,7 +6,7 @@ class MapMaker:
 
         self.level = 1
 
-        map_name = f"cse210-FinalProject/level_{self.level}_1.tmx"
+        map_name = f"cse210-FinalProject/level_{self.level}.tmx"
         
         self.my_map = arcade.tilemap.read_tmx(map_name)
 
@@ -28,12 +28,20 @@ class MapMaker:
         decoration_list = arcade.SpriteList(is_static=True)
         decoration_list = arcade.tilemap.process_layer(self.my_map, "Decorations", constants.TILE_SCALING)
 
+        door_list = arcade.SpriteList(is_static=True)
+        door_list = arcade.tilemap.process_layer(self.my_map, "Doors", constants.TILE_SCALING)
+
+        invisible_list = arcade.SpriteList(is_static=True)
+        invisible_list = arcade.tilemap.process_layer(self.my_map, "Invisible", constants.TILE_SCALING)
+
         cast['walls'] = wall_list
         cast['moving_walls'] = moving_wall_list
         cast['hazards'] = hazard_list
         cast['coins'] = coin_list
         cast['keys'] = key_list
+        cast['doors'] = door_list
         cast['decorations'] = decoration_list
+        cast['invisible'] = invisible_list
 
 
 
