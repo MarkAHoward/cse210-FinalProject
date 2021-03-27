@@ -5,7 +5,7 @@ from game import constants
 class Gravity:
     def __init__(self, cast):
         self.player_sprite = cast['player'][0]
-        self.wall_list = cast["walls"]
+        # self.wall_list = cast["walls"]
         # Set the gravity. (0, 0) is good for outer space and top-down.
         self.movement_value = 0
         self.jump_value = 0
@@ -24,7 +24,11 @@ class Gravity:
                                        max_horizontal_velocity=constants.PLAYER_MAX_HORIZONTAL_SPEED,
                                        max_vertical_velocity=constants.PLAYER_MAX_VERTICAL_SPEED)
 
-        self.physics_engine.add_sprite_list(self.wall_list,
+        self.physics_engine.add_sprite_list(cast['walls'],
+                                            friction=constants.WALL_FRICTION,
+                                            collision_type="wall",
+                                            body_type=arcade.PymunkPhysicsEngine.STATIC)
+        self.physics_engine.add_sprite_list(cast['invisible'],
                                             friction=constants.WALL_FRICTION,
                                             collision_type="wall",
                                             body_type=arcade.PymunkPhysicsEngine.STATIC)
@@ -42,6 +46,7 @@ class Gravity:
             self.physics_engine.apply_force(self.player_sprite, force)
             # Set friction to zero for the player while moving
             self.physics_engine.set_friction(self.player_sprite, 0)
+            # self.physics_engine.step()
             
         elif self.movement_value < 0:
             # Create a force to the left. Apply it.
@@ -53,9 +58,11 @@ class Gravity:
             self.physics_engine.apply_force(self.player_sprite, force)
             # Set friction to zero for the player while moving
             self.physics_engine.set_friction(self.player_sprite, 0)
+            # self.physics_engine.step()
         else:
             # Player's feet are not moving. Therefore up the friction so we stop.
             self.physics_engine.set_friction(self.player_sprite, 1.0)
+            # self.physics_engine.step()
 
     def _jump_player(self):
         # find out if player is standing on ground
@@ -64,6 +71,7 @@ class Gravity:
                 # She is! Go ahead and jump
                 impulse = (0, constants.PLAYER_JUMP_IMPULSE)
                 self.physics_engine.apply_impulse(self.player_sprite, impulse)
+                # self.physics_engine.step()
             
     def set_movement_values(self, x, y):
         self.movement_value = x
