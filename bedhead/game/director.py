@@ -24,7 +24,6 @@ class Director(arcade.View):
         self._script = game_state.script
         self._input_service = game_state.input_service
         self._gravity_engine = game_state.gravity_engine
-        # self._game_over = game_state.game_over
 
 
     def on_update(self, delta_time):
@@ -32,6 +31,7 @@ class Director(arcade.View):
         self._gravity_engine.physics_engine.step()
         player = self._cast["player"][0]
         if player.alive == False:
+            player.reset_player()
             self.views['window'].show_view(self.views['game_over'])
 
     def on_draw(self):

@@ -13,3 +13,10 @@ class Player(arcade.Sprite):
 
     def die(self):
         self.alive = False
+
+    def reset_player(self):
+        self.center_x = int(constants.SCREEN_WIDTH / 2)
+        self.center_y = int(constants.SCREEN_HEIGHT / 2)
+        self.change_x = 0
+        self.change_y = 0
+        self.alive = True
