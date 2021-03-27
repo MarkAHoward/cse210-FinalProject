@@ -14,6 +14,7 @@ from game.gravity import Gravity
 from game.screen_scroll_action import ScreenScrollAction
 from game.items import Items
 from game.game_over import GameOverView
+from game.background_maker import BackgroundMaker
 
 class GameState:
 
@@ -28,6 +29,7 @@ class GameState:
         items = Items()
         self.cast['items'] = [items]
 
+        background = BackgroundMaker(self.cast)
         maps = MapMaker(self.cast)
 
         score = Score()
