@@ -37,7 +37,6 @@ class MapMaker:
         cast['walls'] = wall_list
         cast['moving_walls'] = moving_wall_list
         cast['hazards'] = hazard_list
-        cast['Doors'] = doors_list
         cast['coins'] = coin_list
         cast['keys'] = key_list
         cast['doors'] = door_list
