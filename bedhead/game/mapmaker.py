@@ -31,10 +31,14 @@ class MapMaker:
         decoration_list = arcade.SpriteList()
         decoration_list = arcade.tilemap.process_layer(self.my_map, "Decorations", constants.TILE_SCALING)
 
+        doors_list = arcade.SpriteList()
+        decoration_list = arcade.tilemap.process_layer(self.my_map, "Doors", constants.TILE_SCALING)
+
         cast['background'] = background_list
         cast['walls'] = wall_list
         cast['moving_walls'] = moving_wall_list
         cast['hazards'] = hazard_list
+        cast['Doors'] = doors_list
         cast['coins'] = coin_list
         cast['keys'] = key_list
         cast['decorations'] = decoration_list
