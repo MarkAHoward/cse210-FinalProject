@@ -71,7 +71,7 @@ class Gravity:
                 # She is! Go ahead and jump
                 impulse = (0, constants.PLAYER_JUMP_IMPULSE)
                 self.physics_engine.apply_impulse(self.player_sprite, impulse)
-                # self.physics_engine.step()
+                self.physics_engine.step()
             
     def set_movement_values(self, x, y):
         self.movement_value = x
@@ -80,6 +80,7 @@ class Gravity:
     def move_player(self):
         self._move_horizontally()
         self._jump_player()
+        self.player_sprite.pymunk_moved(self.physics_engine, self.player_sprite.change_x, self.player_sprite.change_y, 0)
         self.physics_engine.step()
 
 

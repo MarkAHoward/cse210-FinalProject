@@ -49,5 +49,38 @@ class GameState:
         do_updates = DoUpdatesAction(self.gravity_engine)
 
         self.script["input"] = [control_actors]
-        self.script["update"] = [do_updates, handle_collisions, screen_scrolling] # dont forget to add handle_collision_aciton after finishing code for it
+        self.script["update"] = [do_updates, handle_collisions, screen_scrolling]
+        self.script["output"] = [do_outputs] 
+
+    def reset_game(self):
+
+        self.cast = {}
+
+        player = Player()
+        self.cast['player'] = [player]
+
+        items = Items()
+        self.cast['items'] = [items]
+
+        background = BackgroundMaker(self.cast)
+        maps = MapMaker(self.cast)
+
+        score = Score()
+        self.cast["score"] = [score]
+        
+        self.script = {}
+
+        self.output_services = OutputServices()
+        self.input_service = InputServices(self.cast)
+        self.gravity_engine = Gravity(self.cast)
+
+        handle_collisions = DoCollisionsAction(self.cast)
+        self.screen_scrolling = ScreenScrollAction()
+
+        control_actors = ControlActorsAction(self.input_service, self.gravity_engine)
+        do_outputs = DrawActorsAction(self.output_services, self.screen_scrolling)
+        do_updates = DoUpdatesAction(self.gravity_engine)
+
+        self.script["input"] = [control_actors]
+        self.script["update"] = [do_updates, handle_collisions, self.screen_scrolling]
         self.script["output"] = [do_outputs] 
