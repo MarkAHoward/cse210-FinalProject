@@ -17,11 +17,11 @@ GRAVITY = 1800
 
 # Damping - Amount of speed lost per second
 DEFAULT_DAMPING = 1.0
-PLAYER_DAMPING = 0.6
+PLAYER_DAMPING = 0.9
 
 # Friction between objects
 PLAYER_FRICTION = 1.0
-WALL_FRICTION = 0.9
+WALL_FRICTION = 1.0
 DYNAMIC_ITEM_FRICTION = 0.6
 
 # Mass (defaults to 1)
@@ -35,7 +35,7 @@ PLAYER_MAX_VERTICAL_SPEED = 1200
 PLAYER_MOVE_FORCE_ON_GROUND = 5000
 
 # Force applied when moving left/right in the air
-PLAYER_MOVE_FORCE_IN_AIR = 6000
+PLAYER_MOVE_FORCE_IN_AIR = 3000
 
 # Strength of a jump
 PLAYER_JUMP_IMPULSE = 1800
