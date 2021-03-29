@@ -25,6 +25,7 @@ def main():
     views['game_over'] = game_over
     views['game_state'] = game_state
 
+
     views['window'].show_view(views['start_screen'])
     game_view = views['start_screen']
     game_view.setup()

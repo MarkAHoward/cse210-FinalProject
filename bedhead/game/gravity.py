@@ -46,7 +46,7 @@ class Gravity:
             self.physics_engine.apply_force(self.player_sprite, force)
             # Set friction to zero for the player while moving
             self.physics_engine.set_friction(self.player_sprite, 0)
-            # self.physics_engine.step()
+            self.physics_engine.step()
             
         elif self.movement_value < 0:
             # Create a force to the left. Apply it.
@@ -58,11 +58,11 @@ class Gravity:
             self.physics_engine.apply_force(self.player_sprite, force)
             # Set friction to zero for the player while moving
             self.physics_engine.set_friction(self.player_sprite, 0)
-            # self.physics_engine.step()
+            self.physics_engine.step()
         else:
             # Player's feet are not moving. Therefore up the friction so we stop.
             self.physics_engine.set_friction(self.player_sprite, 1.0)
-            # self.physics_engine.step()
+            self.physics_engine.step()
 
     def _jump_player(self):
         # find out if player is standing on ground
@@ -71,7 +71,7 @@ class Gravity:
                 # She is! Go ahead and jump
                 impulse = (0, constants.PLAYER_JUMP_IMPULSE)
                 self.physics_engine.apply_impulse(self.player_sprite, impulse)
-                # self.physics_engine.step()
+                self.physics_engine.step()
             
     def set_movement_values(self, x, y):
         self.movement_value = x
@@ -80,6 +80,7 @@ class Gravity:
     def move_player(self):
         self._move_horizontally()
         self._jump_player()
+        self.player_sprite.pymunk_moved(self.physics_engine, self.player_sprite.change_x, self.player_sprite.change_y, 0)
         self.physics_engine.step()
 
 

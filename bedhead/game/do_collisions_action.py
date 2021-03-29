@@ -20,6 +20,8 @@ class DoCollisionsAction(Action):
         self.hazard_list = cast["hazards"]
         self.Score = cast["score"][0]
         self.items = cast["items"][0]
+        self.door_list = cast['doors']
+        
 
     def execute(self, cast):
         """Executes the action using the given actors.
@@ -30,8 +32,7 @@ class DoCollisionsAction(Action):
         self.on_coin_collision()
         self.on_key_collision()
         self.on_hazard_collision()
-
-
+        self.on_door_collision()
 
     def on_coin_collision(self):
         coin_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.coin_list)
@@ -52,4 +53,10 @@ class DoCollisionsAction(Action):
     def on_hazard_collision(self):
         hazards_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.hazard_list)
         for hazard in hazards_hit_list:
-            self.player_sprite.die() # this needs to trigger some game over function
+            self.player_sprite.die()
+
+    def on_door_collision(self):
+        door_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.door_list)
+        for door in door_hit_list:
+            if self.items.keys_recieved > 0:
+                return None
