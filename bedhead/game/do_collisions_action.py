@@ -59,8 +59,6 @@ class DoCollisionsAction(Action):
             # sound
             arcade.play_sound(self.key_collect)
 
-            # something to return the information that the key has been hit and stored in the key list that lets you go through a door
-
     def on_hazard_collision(self):
         hazards_hit_list = arcade.check_for_collision_with_list(
             self.player_sprite, self.hazard_list)
