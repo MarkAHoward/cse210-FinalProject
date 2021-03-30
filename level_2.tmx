@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="45" height="30" tilewidth="16" tileheight="16" infinite="0" nextlayerid="11" nextobjectid="2">
+ <tileset firstgid="1" source="bedhead/assets/Background_Tile.tsx"/>
+ <tileset firstgid="2" source="bedhead/assets/Base_Tiles.tsx"/>
+ <tileset firstgid="200" source="bedhead/assets/Complimentary_Tiles_2.tsx"/>
+ <tileset firstgid="1100" source="bedhead/assets/Items.tsx"/>
+ <layer id="1" name="Background" width="45" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzjEBAAAMAiDXv/Q6+PhAAhIAAAAAgN6tA4UHFcwAAg==
+  </data>
+ </layer>
+ <layer id="2" name="Background_Decorations" width="45" height="30">
+  <data encoding="base64" compression="zlib">
+   eJzt0VkKgkAAh3HxWnWFOkHLDVpu0L49ttdzy1tvQXtX6wMVRGwcIZDg/8EPdBxnBnUcpZRSSimllFJKZVUJZVRQzfgsttVQRwPNjM9iWwttdNBNmJtD3r/uoY8Bhhil2HPiesLr2TbGFDPMsUiYW0DRv19ihTU22KbY9+R6wuv9ezvfHgccQ2OBF96RsXPMvAeehjmmPeLWC1xwNTxPw3QGW9Hz3HBPeMeJGbN575vge8X9m1/5APIFakI=
+  </data>
+ </layer>
+ <layer id="3" name="Walls" width="45" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztw0EJAAAIBLDrn8OgJjh8CxssAQAAAIDbPAzNAkShHNU=
+  </data>
+ </layer>
+ <layer id="5" name="Invisible" width="45" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzrENADAMw7D8f0cO7Q1FAXUhd8OaAYA7+2n7QnNDc0NzQ3NDc0NzQ3NDc2M/fkPlAG0OFxE=
+  </data>
+ </layer>
+ <objectgroup id="4" name="Moving"/>
+ <objectgroup id="6" name="Hazards"/>
+ <layer id="7" name="Doors" width="45" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzkEJACAUBbAH35v2r6gxzCCIXrYESwAAAAC4bVay6vfiTG/JaL8X8MYGGAsB9Q==
+  </data>
+ </layer>
+ <layer id="8" name="Coins" width="45" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztwQEBAAAAgiD/r25IQAEAAAAAfBkVGAAB
+  </data>
+ </layer>
+ <objectgroup id="9" name="Keys">
+  <object id="1" gid="1169" x="311" y="415" width="16" height="16"/>
+ </objectgroup>
+ <layer id="10" name="Decorations" width="45" height="30">
+  <data encoding="base64" compression="zlib">
+   eJztzjczBWEYhuHzA2S9rJf1sl7Wy3pZL6tlmiPHH+gqFMbwMcbY5r1nrtmdnd39nlwuiqIoiqIoiqLo7yqgkCKKKaGUMsoz3JWqgkqqqKaGWuqoz25WsgYaaaKZFlppoz3DXak66KSLbnropY/+DHelGmCQIYYZYZQxxjPclWqCSaaYZoZZ5pjPcFeqBRZZYpkVVlljPcNdqTbYZIttdthlj/1/OP/gF+8ccsQxJ5xyxjkXPzz3/p0HHnnimZfE80uuuOaGW+4S7+ffvsl/uP/s+t1/o+irXgFPlTha
+  </data>
+ </layer>
+</map>
