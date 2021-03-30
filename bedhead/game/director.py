@@ -1,6 +1,7 @@
 import arcade
 from game import constants
 
+
 class Director(arcade.View):
     def __init__(self, views):
         """ This will start the game
@@ -15,6 +16,10 @@ class Director(arcade.View):
         self._input_service = None
         self._game_state = None
 
+        # background music
+        self.background_music = arcade.load_sound(
+            "cse210-FinalProject/bedhead/assets/Our-Mountain_v003_Looping.mp3")
+
     def setup(self, game_state):
         """ This will setup the background color
         """
@@ -24,7 +29,8 @@ class Director(arcade.View):
         self._input_service = game_state.input_service
         self._gravity_engine = game_state.gravity_engine
         self._game_state = game_state
-    
+        # background music
+        arcade.play_sound(self.background_music)
 
     def on_update(self, delta_time):
         self._cue_action("update")
@@ -48,9 +54,9 @@ class Director(arcade.View):
 
     def _cue_action(self, tag):
         """Executes the actions with the given tag.
-        
+
         Args:
             tag (string): The given tag.
-        """ 
+        """
         for action in self._script[tag]:
             action.execute(self._cast)
