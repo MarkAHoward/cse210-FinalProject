@@ -32,6 +32,10 @@ class Gravity:
                                             friction=constants.WALL_FRICTION,
                                             collision_type="wall",
                                             body_type=arcade.PymunkPhysicsEngine.STATIC)
+        self.physics_engine.add_sprite_list(cast['moving_walls'],
+                                            friction=constants.WALL_FRICTION,
+                                            collision_type="wall",
+                                            body_type=arcade.PymunkPhysicsEngine.STATIC)
                                             
         self.is_on_ground = self.physics_engine.is_on_ground(self.player_sprite)
 
