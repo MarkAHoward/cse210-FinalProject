@@ -12,9 +12,12 @@ class Player(arcade.Sprite):
         self.alive = True
         self.scale = constants.CHARACTER_SCALING
         self.main_path = "cse210-FinalProject/bedhead/assets/Individual_Sprites/adventurer"
-        self.idle_texture_pair = arcade.load_texture_pair(f"{self.main_path}-idle-00.png")
-        self.jump_texture_pair = arcade.load_texture_pair(f"{self.main_path}-jump-02.png")
-        self.fall_texture_pair = arcade.load_texture_pair(f"{self.main_path}-fall-01.png")
+        self.idle_texture_pair = arcade.load_texture_pair(
+            f"{self.main_path}-idle-00.png")
+        self.jump_texture_pair = arcade.load_texture_pair(
+            f"{self.main_path}-jump-02.png")
+        self.fall_texture_pair = arcade.load_texture_pair(
+            f"{self.main_path}-fall-01.png")
 
         # Set the initial texture
         self.texture = self.idle_texture_pair[0]
@@ -33,13 +36,18 @@ class Player(arcade.Sprite):
 
         self.idle_textures = []
         for i in range(3):
-            texture = arcade.load_texture_pair(f"{self.main_path}-idle-0{i}.png")
+            texture = arcade.load_texture_pair(
+                f"{self.main_path}-idle-0{i}.png")
             self.idle_textures.append(texture)
 
         self.walk_textures = []
         for i in range(6):
-            texture = arcade.load_texture_pair(f"{self.main_path}-run-0{i}.png")
+            texture = arcade.load_texture_pair(
+                f"{self.main_path}-run-0{i}.png")
             self.walk_textures.append(texture)
+
+        # Load Sounds
+        ##self.jump_sound = arcade.load_sound(":resources:sounds/jump1.wav")
 
     def die(self):
         self.alive = False

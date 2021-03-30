@@ -1,17 +1,24 @@
 import arcade
 from game import constants
 
+
 class GameOverView(arcade.View):
     """ View to show when game is over """
 
     def __init__(self, views):
         """ This is run once when we switch to this view """
         super().__init__()
-        self.texture = arcade.load_texture("cse210-FinalProject/bedhead/assets/images/game_over.png")
+        self.texture = arcade.load_texture(
+            "cse210-FinalProject/bedhead/assets/images/game_over.png")
         self.views = views
 
+        # sound
+        self.end_sound = arcade.load_sound(":resources:sounds/gameover2.wav")
+
     def setup(self):
-        arcade.set_viewport(0, constants.SCREEN_WIDTH - 1, 0, constants.SCREEN_HEIGHT - 1)
+        arcade.set_viewport(0, constants.SCREEN_WIDTH - 1,
+                            0, constants.SCREEN_HEIGHT - 1)
+        arcade.play_sound(self.end_sound)
 
     def on_draw(self):
         """ Draw this view """
