@@ -11,7 +11,7 @@ def main():
 
     window = arcade.Window(constants.SCREEN_WIDTH,
                            constants.SCREEN_HEIGHT, constants.SCREEN_TITLE)
-
+            
     views = {}
 
     game = Director(views)
