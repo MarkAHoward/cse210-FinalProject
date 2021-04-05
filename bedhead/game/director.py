@@ -1,5 +1,6 @@
 import arcade
 from game import constants
+from game.musichandler import MusicHandler
 
 
 class Director(arcade.View):
@@ -7,6 +8,9 @@ class Director(arcade.View):
         """ This will start the game
         """
         super().__init__()
+
+        self.BACKGROUND_MUSIC = ["cse210-FinalProject/bedhead/assets/Our-Mountain_v003_Looping.mp3",
+                                 "cse210-FinalProject/bedhead/assets/Our-Mountain_v003_Looping.mp3"]
 
         self.views = views
 
@@ -16,21 +20,20 @@ class Director(arcade.View):
         self._input_service = None
         self._game_state = None
 
-        # background music
-        self.background_music = arcade.load_sound(
-            "cse210-FinalProject/bedhead/assets/Our-Mountain_v003_Looping.mp3")
+        self.musichander = MusicHandler()
 
     def setup(self, game_state):
         """ This will setup the background color
         """
-        arcade.set_background_color(arcade.color.SKY_BLUE)
+
         self._cast = game_state.cast
         self._script = game_state.script
         self._input_service = game_state.input_service
         self._gravity_engine = game_state.gravity_engine
         self._game_state = game_state
-        # background music
-        arcade.play_sound(self.background_music)
+
+        # self.musichander.add_song_list(self.BACKGROUND_MUSIC)
+        # self.musichander.play_song_looped()
 
     def on_update(self, delta_time):
         self._cue_action("update")
@@ -40,6 +43,7 @@ class Director(arcade.View):
             self._game_state.reset_game()
             self.views['game_over'].setup()
             self.views['window'].show_view(self.views['game_over'])
+            # self.musichander.clear_queue()
 
     def on_draw(self):
         self._cue_action("output")

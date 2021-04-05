@@ -9,12 +9,13 @@ from game.do_collisions_action import DoCollisionsAction
 from game.input_services import InputServices
 from game.control_actors_action import ControlActorsAction
 from game.do_collisions_action import DoCollisionsAction
-from game.score import Score 
+from game.score import Score
 from game.gravity import Gravity
 from game.screen_scroll_action import ScreenScrollAction
 from game.items import Items
 from game.game_over import GameOverView
 from game.background_maker import BackgroundMaker
+
 
 class GameState:
 
@@ -34,7 +35,7 @@ class GameState:
 
         score = Score()
         self.cast["score"] = [score]
-        
+
         self.script = {}
 
         self.output_services = OutputServices()
@@ -44,13 +45,15 @@ class GameState:
         handle_collisions = DoCollisionsAction(self.cast)
         screen_scrolling = ScreenScrollAction()
 
-        control_actors = ControlActorsAction(self.input_service, self.gravity_engine)
+        control_actors = ControlActorsAction(
+            self.input_service, self.gravity_engine)
         do_outputs = DrawActorsAction(self.output_services, screen_scrolling)
         do_updates = DoUpdatesAction(self.gravity_engine)
 
         self.script["input"] = [control_actors]
-        self.script["update"] = [do_updates, handle_collisions, screen_scrolling]
-        self.script["output"] = [do_outputs] 
+        self.script["update"] = [do_updates,
+                                 handle_collisions, screen_scrolling]
+        self.script["output"] = [do_outputs]
 
     def reset_game(self):
 
@@ -67,7 +70,7 @@ class GameState:
 
         score = Score()
         self.cast["score"] = [score]
-        
+
         self.script = {}
 
         self.output_services = OutputServices()
@@ -77,10 +80,13 @@ class GameState:
         handle_collisions = DoCollisionsAction(self.cast)
         self.screen_scrolling = ScreenScrollAction()
 
-        control_actors = ControlActorsAction(self.input_service, self.gravity_engine)
-        do_outputs = DrawActorsAction(self.output_services, self.screen_scrolling)
+        control_actors = ControlActorsAction(
+            self.input_service, self.gravity_engine)
+        do_outputs = DrawActorsAction(
+            self.output_services, self.screen_scrolling)
         do_updates = DoUpdatesAction(self.gravity_engine)
 
         self.script["input"] = [control_actors]
-        self.script["update"] = [do_updates, handle_collisions, self.screen_scrolling]
-        self.script["output"] = [do_outputs] 
+        self.script["update"] = [do_updates,
+                                 handle_collisions, self.screen_scrolling]
+        self.script["output"] = [do_outputs]

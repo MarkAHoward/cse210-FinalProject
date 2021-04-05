@@ -8,7 +8,8 @@ class GameOverView(arcade.View):
     def __init__(self, views):
         """ This is run once when we switch to this view """
         super().__init__()
-        self.texture = arcade.load_texture("cse210-FinalProject/bedhead/assets/images/game_over.png")
+        self.texture = arcade.load_texture(
+            "cse210-FinalProject/bedhead/assets/images/game_over.png")
         self.views = views
 
         # sound

@@ -57,3 +57,8 @@ LEFT_FACING = 1
 DISTANCE_TO_CHANGE_TEXTURE = 20
 
 CHARACTER_IMAGE = "cse210-FinalProject/bedhead/assets/adventurer-idle-00.png"
+
+BACKGROUND_MUSIC = [
+    "cse210-FinalProject/bedhead/assets/Our-Mountain_v003_Looping.mp3", "cse210-FinalProject/bedhead/assets/Our-Mountain_v003_Looping.mp3"]
+
+MUSIC_VOLUME = 100
