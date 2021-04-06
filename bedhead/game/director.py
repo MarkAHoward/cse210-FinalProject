@@ -73,5 +73,6 @@ class Director(arcade.View):
             self._cast['items'][0].level_two_keys()
 
         if items.win_screen == True:
+            self._game_state.reset_game()
             self.views['win_screen'].setup()
             self.views['window'].show_view(self.views['win_screen'])
