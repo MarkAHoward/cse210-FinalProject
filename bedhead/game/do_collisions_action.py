@@ -70,6 +70,7 @@ class DoCollisionsAction(Action):
         door_hit_list = arcade.check_for_collision_with_list(
             self.player_sprite, self.door_list)
         for door in door_hit_list:
-            if self.items.keys_recieved > 0:
-                self.items.go_to_next_level()
-
+            if self.items.keys_recieved == 2:
+                self.items.go_to_next_level()   
+            elif self.items.keys_received == 3:
+                self.items.win_screen()

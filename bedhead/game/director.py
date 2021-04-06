@@ -35,16 +35,7 @@ class Director(arcade.View):
     def on_update(self, delta_time):
         self._cue_action("update")
         self._gravity_engine.physics_engine.step()
-        player = self._cast["player"][0]
-        items = self._cast["items"][0]
-        if player.alive == False:
-            self._game_state.reset_game()
-            self.views['game_over'].setup()
-            self.views['window'].show_view(self.views['game_over'])
-        if items.next_level == True:
-            self._game_state.load_next_level()
-            self.views['window'].show_view(self.views['game'])
-            self.views['game'].setup(self.views['game_state'])
+        self.check_for_view_changes()
 
     def on_draw(self):
         self._cue_action("output")
@@ -65,3 +56,19 @@ class Director(arcade.View):
         """
         for action in self._script[tag]:
             action.execute(self._cast)
+
+    def check_for_view_changes(self):
+        player = self._cast["player"][0]
+        items = self._cast["items"][0]
+        if player.alive == False:
+            self._game_state.reset_game()
+            self.views['game_over'].setup()
+            self.views['window'].show_view(self.views['game_over'])
+        if items.next_level == True:
+            self._game_state.load_next_level()
+            self.views['window'].show_view(self.views['game'])
+            self.views['game'].setup(self.views['game_state'])
+        if items.win_screen == True:
+            self._game_state.reset_game()
+            self.views['win_screen'].setup()
+            self.views['window'].show_view(self.views['win_screen'])
