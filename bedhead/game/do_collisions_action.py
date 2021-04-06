@@ -14,7 +14,7 @@ class DoCollisionsAction(Action):
         _input_service (InputService): An instance of InputService.
     """
 
-    def __init__(self, cast):
+    def __init__(self, cast, game_state):
         self.player_sprite = cast['player'][0]
         self.coin_list = cast['coins']
         self.key_list = cast['keys']
@@ -22,6 +22,7 @@ class DoCollisionsAction(Action):
         self.Score = cast["score"][0]
         self.items = cast["items"][0]
         self.door_list = cast['doors']
+        self.game_state = game_state
 
         # coin sounds
         self.coin_collect = arcade.load_sound(":resources:sounds/coin2.wav")
@@ -51,8 +52,7 @@ class DoCollisionsAction(Action):
             arcade.play_sound(self.coin_collect)
 
     def on_key_collision(self):
-        key_hit_list = arcade.check_for_collision_with_list(
-            self.player_sprite, self.key_list)
+        key_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.key_list)
         for key in key_hit_list:
             key.remove_from_sprite_lists()
             self.items.add_key_to_inventory()
@@ -60,14 +60,16 @@ class DoCollisionsAction(Action):
             arcade.play_sound(self.key_collect)
 
     def on_hazard_collision(self):
-        hazards_hit_list = arcade.check_for_collision_with_list(
-            self.player_sprite, self.hazard_list)
+        hazards_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.hazard_list)
         for hazard in hazards_hit_list:
             self.player_sprite.die()
 
     def on_door_collision(self):
-        door_hit_list = arcade.check_for_collision_with_list(
-            self.player_sprite, self.door_list)
+        door_hit_list = arcade.check_for_collision_with_list(self.player_sprite, self.door_list)
         for door in door_hit_list:
-            if self.items.keys_recieved > 0:
-                return None
+            if self.items.keys_recieved == 2:
+                self.items.go_to_next_level()   
+            elif self.items.keys_recieved == 3:
+                self.items.win_screen_activate()
+            else:
+                None
