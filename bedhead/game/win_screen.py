@@ -8,7 +8,7 @@ class WinScreen(arcade.View):
     def __init__(self, views):
         """ This is run once when we switch to this view """
         super().__init__()
-        self.texture = arcade.load_texture("cse210-FinalProject/bedhead/assets/stringstar fields/background_0.png")
+        self.texture = arcade.load_texture("cse210-FinalProject/bedhead/assets/win_screen.png")
         self.views = views
 
         # sound
